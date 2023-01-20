@@ -1,2 +1,2 @@
 # SistemaVentas
-Sistema de ventas sencillo realizado en Angular como front-end y Asp.net core 7  como back-end
+Simple sales system made in Angular as front-end and Asp.net core 7 as back-end
