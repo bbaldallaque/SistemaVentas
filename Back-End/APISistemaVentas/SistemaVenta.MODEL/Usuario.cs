@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SistemaVenta.MODEL;
+﻿namespace SistemaVenta.MODEL;
 
 public partial class Usuario
 {
