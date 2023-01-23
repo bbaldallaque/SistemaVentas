@@ -42,10 +42,10 @@ namespace SistemaVenta.BLL.Servicios
             {
                 var queryUsuario = await _usuarioRepositorio.Consultar(u => u.Correo == correo && u.Clave == clave);
 
-                if (queryUsuario.FirstOrDefaultAsync() == null)
+                if (queryUsuario.FirstOrDefault() == null)
                     throw new TaskCanceledException("El usuario o contraseña no existe");
 
-                Usuario devolverUsuario = await queryUsuario.Include(rol => rol.IdRolNavigation).FirstAsync();
+                Usuario devolverUsuario = queryUsuario.Include(rol => rol.IdRolNavigation).First();
 
                 return _mapper.Map<SeccionDTO>(devolverUsuario);
 

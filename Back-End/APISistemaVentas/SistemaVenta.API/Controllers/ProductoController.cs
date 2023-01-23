@@ -8,25 +8,25 @@ namespace SistemaVenta.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class UsuarioController : ControllerBase
+    public class ProductoController : ControllerBase
     {
-        private readonly IUsuarioService _usuarioService;
+        private readonly IProductoService _productoService;
 
-        public UsuarioController(IUsuarioService usuarioService)
+        public ProductoController(IProductoService productoService)
         {
-            _usuarioService = usuarioService;
+            _productoService = productoService;
         }
 
         [HttpGet("Lista")]
         [ProducesDefaultResponseType]
         public async Task<IActionResult> Lista()
         {
-            var rsp = new Response<List<UsuarioDTO>>();
+            var rsp = new Response<List<ProductoDTO>>();
 
             try
             {
                 rsp.Status = true;
-                rsp.Value = await _usuarioService.Lista();
+                rsp.Value = await _productoService.Lista();
             }
             catch (Exception ex)
             {
@@ -38,37 +38,16 @@ namespace SistemaVenta.API.Controllers
             return Ok(rsp);
         }
 
-        [HttpPost("IniciarSeccion")]
+        [HttpPost("Guardar")]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> IniciarSeccion([FromBody] LoginDTO login)
+        public async Task<IActionResult> IniciarSeccion([FromBody] ProductoDTO producto)
         {
-            var rsp = new Response<SeccionDTO>();
+            var rsp = new Response<ProductoDTO>();
 
             try
             {
                 rsp.Status = true;
-                rsp.Value = await _usuarioService.ValidarCredenciales(login.Correo, login.Clave);
-            }
-            catch (Exception ex)
-            {
-
-                rsp.Status = false;
-                rsp.Msg = ex.Message;
-            }
-
-            return Ok(rsp);
-        }
-
-        [HttpPost("Registrarse")]
-        [ProducesDefaultResponseType]
-        public async Task<IActionResult> IniciarSeccion([FromBody] UsuarioDTO usuario)
-        {
-            var rsp = new Response<UsuarioDTO>();
-
-            try
-            {
-                rsp.Status = true;
-                rsp.Value = await _usuarioService.Crear(usuario);
+                rsp.Value = await _productoService.Crear(producto);
             }
             catch (Exception ex)
             {
@@ -82,14 +61,14 @@ namespace SistemaVenta.API.Controllers
 
         [HttpPut("Edit")]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> EditUser([FromBody] UsuarioDTO usuario)
+        public async Task<IActionResult> EditUser([FromBody] ProductoDTO producto)
         {
             var rsp = new Response<bool>();
 
             try
             {
                 rsp.Status = true;
-                rsp.Value = await _usuarioService.Editar(usuario);
+                rsp.Value = await _productoService.Editar(producto);
             }
             catch (Exception ex)
             {
@@ -110,7 +89,7 @@ namespace SistemaVenta.API.Controllers
             try
             {
                 rsp.Status = true;
-                rsp.Value = await _usuarioService.Eliminar(id);
+                rsp.Value = await _productoService.Eliminar(id);
             }
             catch (Exception ex)
             {

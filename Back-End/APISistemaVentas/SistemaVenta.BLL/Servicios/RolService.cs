@@ -23,7 +23,7 @@ namespace SistemaVenta.BLL.Servicios
             try
             {
                 var listaRoles = await _rolRepositorio.Consultar();
-                return _mapper.Map<List<RolDTO>>(listaRoles.ToList());
+                return _mapper.Map<List<RolDTO>>(listaRoles.AsNoTracking());
             }
             catch (Exception)
             {
