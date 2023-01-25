@@ -39,17 +39,38 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MomentDateModule } from '@angular/material-moment-adapter';
  
-
-
-
- 
-
-
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule
+  ],
+
+  exports:[
+    CommonModule,
+    ReactiveFormsModule, 
+    FormsModule,
+    HttpClientModule,
+    MatCommonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatGridListModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MomentDateModule    
   ]
 })
 export class SharedModule { }
